@@ -1,4 +1,4 @@
-export interface IThemeCustomProperties {
+export interface IThemeCustomSettings {
   accent?: string;
   accentPrevious?: string;
   autoApplyIcons?: boolean;
