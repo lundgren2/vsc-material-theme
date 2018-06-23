@@ -28,17 +28,19 @@
     }
   },
   "scripts": {
-    "build": "rimraf _tmp-output-remote-icons/ && yarn get-remote-icons && yarn build-icons && yarn build-themes && yarn build-icons-accents && yarn build-icons-variants && yarn build-icons-variants-json",
+    "build": "yarn cleanup && yarn get-remote-icons && yarn build-icons && yarn build-themes && yarn build-icons-accents && yarn build-icons-variants && yarn build-icons-variants-json && yarn copy-ui",
+    "build-icons": "yarn remove-icons && yarn minimize-icons && gulp build:icons && yarn minimize-json",
     "minimize-icons": "mkdir icons && svgo -f src/icons/svgs -o icons/",
     "minimize-json": "json-minify themes/.material-theme-icons.tmp > themes/Material-Theme-Icons.json && yarn remove-icons-tmp",
     "remove-icons": "rimraf icons && rimraf themes/Material-Theme-Icons.json",
     "remove-icons-tmp": "rimraf themes/.material-theme-icons.tmp",
-    "get-remote-icons": "yarn gulp build:get-remote-icons",
-    "build-icons": "yarn remove-icons && yarn minimize-icons && yarn gulp build:icons && yarn minimize-json",
-    "build-icons-accents": "yarn gulp build:icons.accents",
-    "build-icons-variants": "yarn gulp build:icons.variants",
-    "build-icons-variants-json": "yarn gulp build:icons.variants-json",
-    "build-themes": "yarn gulp build:themes",
+    "get-remote-icons": "gulp build:get-remote-icons",
+    "cleanup": "rimraf _tmp-output-remote-icons/ && rimraf ui",
+    "build-icons-accents": "gulp build:icons.accents",
+    "build-icons-variants": "gulp build:icons.variants",
+    "build-icons-variants-json": "gulp build:icons.variants-json",
+    "build-themes": "gulp build:themes",
+    "copy-ui": "gulp build:copy-ui",
     "build-ts": "tsc -p ./tsconfig.json",
     "test": "tslint **.ts",
     "release": "standard-version",
@@ -72,6 +74,11 @@
       {
         "command": "materialTheme.showChangelog",
         "title": "Show changelog",
+        "category": "🎨 Material Theme"
+      },
+      {
+        "command": "materialTheme.showSettingsEditor",
+        "title": "Settings Editor (preview)",
         "category": "🎨 Material Theme"
       }
     ],
