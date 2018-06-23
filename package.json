@@ -20,7 +20,7 @@
     "url": "https://github.com/equinusocio/vsc-material-theme/issues"
   },
   "engines": {
-    "vscode": "^1.19.0"
+    "vscode": "^1.23.0"
   },
   "standard-version": {
     "scripts": {
@@ -192,14 +192,14 @@
     "@types/gulp": "4.0.5",
     "@types/gulp-if": "0.0.33",
     "@types/gulp-util": "3.0.34",
-    "@types/mustache": "0.8.30",
+    "@types/mustache": "0.8.31",
     "@types/ncp": "2.0.1",
     "@types/rimraf": "2.0.2",
     "@types/run-sequence": "0.0.30",
     "@types/through2": "2.0.33",
     "@types/yamljs": "0.2.30",
-    "@types/yargs": "10.0.1",
-    "babel-core": "6.26.0",
+    "@types/yargs": "11.0.0",
+    "babel-core": "6.26.3",
     "babel-preset-es2015": "6.24.1",
     "babel-root-import": "4.1.8",
     "cpx": "1.5.0",
@@ -215,12 +215,12 @@
     "mustache": "2.3.0",
     "ncp": "2.0.0",
     "run-sequence": "2.2.1",
-    "standard-version": "4.3.0",
-    "svgo": "1.0.4",
-    "tslint": "5.9.1",
-    "tslint-xo": "0.7.2",
-    "typescript": "2.8.3",
-    "vscode": "1.1.10",
+    "standard-version": "4.4.0",
+    "svgo": "1.0.5",
+    "tslint": "5.10.0",
+    "tslint-xo": "0.8.0",
+    "typescript": "2.9.2",
+    "vscode": "1.1.18",
     "yamljs": "0.3.0",
     "yargs": "11.0.0"
   },
