@@ -1,3 +1,5 @@
+import * as path from 'path';
+
 import {
   workspace as Workspace,
 
@@ -30,20 +32,22 @@ interface SaveSettingsMessage {
 type Message = SaveSettingsMessage | SettingsChangedMessage;
 type Invalidates = 'all' | 'config' | undefined;
 
-export abstract class WebviewEditor extends Disposable {
+export abstract class WebviewController extends Disposable {
   private panel: WebviewPanel | undefined;
   private disposablePanel: Disposable | undefined;
   private invalidateOnVisible: Invalidates;
+  private context: ExtensionContext;
 
-  constructor() {
+  constructor(context: ExtensionContext) {
     // Applying dispose callback for our disposable function
     super(() => this.dispose());
+
+    this.context = context;
   }
 
   abstract get filename(): string;
   abstract get id(): string;
   abstract get title(): string;
-  abstract get context(): ExtensionContext;
 
   dispose() {
     if (this.disposablePanel) {
@@ -52,7 +56,8 @@ export abstract class WebviewEditor extends Disposable {
   }
 
   private async getHtml(): Promise<string> {
-    const doc = await Workspace.openTextDocument(this.context.asAbsolutePath(this.filename));
+    const doc = await Workspace
+      .openTextDocument(this.context.asAbsolutePath(path.join('ui', this.filename)));
     return doc.getText();
   }
 

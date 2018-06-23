@@ -1,6 +1,7 @@
 import {
   workspace as Workspace,
-  commands as Commands
+  commands as Commands,
+  ExtensionContext
 } from 'vscode';
 
 import * as ThemeCommands from './commands';
@@ -8,9 +9,11 @@ import {isAutoApplyEnable} from './helpers/settings';
 import {onChangeConfiguration} from './helpers/configuration-change';
 import {infoMessage, changelogMessage} from './helpers/messages';
 import shouldShowChangelog from './helpers/should-show-changelog';
+import {SettingsWebview} from '../src/webviews/Settings';
 
-export async function activate() {
+export async function activate(context: ExtensionContext) {
   const config = Workspace.getConfiguration();
+  const settingsView = new SettingsWebview(context);
 
   // Listen on set theme: when the theme is Material Theme, just adjust icon and accent.
   Workspace.onDidChangeConfiguration(onChangeConfiguration);
@@ -38,4 +41,6 @@ export async function activate() {
   Commands.registerCommand('materialTheme.fixIcons', () => ThemeCommands.fixIcons());
   Commands.registerCommand('materialTheme.toggleApplyIcons', () => ThemeCommands.toggleApplyIcons());
   Commands.registerCommand('materialTheme.showChangelog', () => ThemeCommands.showChangelog());
+
+  Commands.registerCommand('materialTheme.showSettingsEditor', () => settingsView.show());
 }
