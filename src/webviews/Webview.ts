@@ -8,31 +8,14 @@ import {
   WebviewPanel,
   ViewColumn,
   window,
-  WebviewPanelOnDidChangeViewStateEvent
+  WebviewPanelOnDidChangeViewStateEvent,
+  Uri
 } from 'vscode';
 
 import {getCustomSettings} from '../../extensions/helpers/settings';
-import {IThemeCustomSettings} from '../../extensions/interfaces/itheme-custom-properties';
+import {Invalidates, Message, SettingsChangedMessage} from './interfaces';
 
-interface SettingsChangedMessage {
-  type: 'settingsChanged';
-  config: IThemeCustomSettings;
-}
-
-interface SaveSettingsMessage {
-  type: 'saveSettings';
-  changes: {
-      [key: string]: any;
-  };
-  removes: string[];
-  scope: 'user' | 'workspace';
-  uri: string;
-}
-
-type Message = SaveSettingsMessage | SettingsChangedMessage;
-type Invalidates = 'all' | 'config' | undefined;
-
-export abstract class WebviewController extends Disposable {
+export abstract class WebviewController<TBootstrap> extends Disposable {
   private panel: WebviewPanel | undefined;
   private disposablePanel: Disposable | undefined;
   private invalidateOnVisible: Invalidates;
@@ -48,6 +31,8 @@ export abstract class WebviewController extends Disposable {
   abstract get filename(): string;
   abstract get id(): string;
   abstract get title(): string;
+
+  abstract getBootstrap(): TBootstrap;
 
   dispose() {
     if (this.disposablePanel) {
@@ -132,9 +117,18 @@ export abstract class WebviewController extends Disposable {
   async show(): Promise<void> {
     const html = await this.getHtml();
 
+    const rootPath = Uri
+      .file(this.context.asAbsolutePath('.'))
+      .with({scheme: 'vscode-resource'}).toString();
+
+    // Replace placeholders in html content for assets and adding configurations as `window.bootstrap`
+    const fullHtml = html
+      .replace(/{{root}}/g, rootPath)
+      .replace('\'{{bootstrap}}\'', JSON.stringify(this.getBootstrap()));
+
     // If panel already opened just reveal
     if (this.panel !== undefined) {
-      this.panel.webview.html = html;
+      this.panel.webview.html = fullHtml;
       return this.panel.reveal(ViewColumn.Active);
     }
 
@@ -158,6 +152,6 @@ export abstract class WebviewController extends Disposable {
       this.panel.webview.onDidReceiveMessage(this.onMessageReceived, this)
     );
 
-    this.panel.webview.html = html;
+    this.panel.webview.html = fullHtml;
   }
 }
