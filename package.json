@@ -2,7 +2,7 @@
   "name": "vsc-material-theme",
   "displayName": "Material Theme",
   "description": "The most epic theme now for Visual Studio Code",
-  "version": "2.0.1",
+  "version": "2.2.0",
   "publisher": "Equinusocio",
   "license": "Apache-2.0",
   "author": "Mattia Astorino [@equinusocio]",
@@ -20,7 +20,7 @@
     "url": "https://github.com/equinusocio/vsc-material-theme/issues"
   },
   "engines": {
-    "vscode": "^1.23.0"
+    "vscode": "^1.25.0"
   },
   "standard-version": {
     "scripts": {
@@ -52,6 +52,10 @@
   "categories": [
     "Themes",
     "Other"
+  ],
+  "keywords": [
+    "VSCode",
+    "Themes"
   ],
   "activationEvents": [
     "*"
@@ -87,25 +91,43 @@
     ],
     "configuration": {
       "type": "object",
-      "title": "Material Theme configuration",
+      "title": "Material Theme",
       "properties": {
         "materialTheme.accent": {
           "type": "string",
-          "description": "Current accent color selected"
-        },
-        "materialTheme.accentPrevious": {
-          "type": "string",
-          "description": "Previous accent color selected"
+          "default": "Blue",
+          "enum": [
+            "Acid Lime",
+            "Blue",
+            "Breaking Bad",
+            "Bright Teal",
+            "Cyan",
+            "Graphite",
+            "Indigo",
+            "Lime",
+            "Orange",
+            "Pink",
+            "Purple",
+            "Red",
+            "Sky",
+            "Tomato",
+            "Teal",
+            "Yellow"
+          ],
+          "description": "Current accent color selected",
+          "scope": "window"
         },
         "materialTheme.autoApplyIcons": {
           "type": "boolean",
-          "description": "Enable/disable auto-apply of Material Theme icons",
-          "default": true
+          "description": "Enable/disable auto-apply of Material Theme icons with window reload when needed",
+          "default": false,
+          "scope": "window"
         },
-        "materialTheme.fixIconsRunning": {
+        "materialTheme.showReloadNotification": {
           "type": "boolean",
-          "description": "For checking if the command is currently acting",
-          "default": false
+          "description": "Useful when autoApplyIcons is false and you want to be asked to reload the window when needed",
+          "default": true,
+          "scope": "window"
         }
       }
     },

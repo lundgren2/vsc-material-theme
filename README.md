@@ -1,11 +1,10 @@
 
 <p align="center"><img width="980px" src="https://i.imgur.com/qvxc7OA.jpg"></p>
 
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/equinusocio/vsc-material-theme.svg?style=flat-square)](https://twitter.com/intent/tweet?text=This%20is%20the%20most%20epic%20theme:&url=https%3A%2F%2Fgithub.com%2Fequinusocio%2Fvsc-material-theme)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/equinusocio/vsc-material-theme.svg?style=flat-square)](https://twitter.com/intent/tweet?text=Check%20the%20most%20epic%20theme%20for%20Visual%20Studio%20Code:&url=https%3A%2F%2Fgithub.com%2Fequinusocio%2Fvsc-material-theme)
 [![GitHub tag](https://img.shields.io/github/release/equinusocio/vsc-material-theme.svg?style=flat-square)](https://github.com/equinusocio/vsc-material-theme/releases)
-<a href="https://code.visualstudio.com/updates/v1_19"><img src="https://img.shields.io/badge/VS_Code-v1.19+-373277.svg?style=flat-square"/></a> <a href="https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme"><img src="https://vsmarketplacebadge.apphb.com/installs/Equinusocio.vsc-material-theme.svg?style=flat-square"/></a>
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=9RSHP5RSLKH64&lc=GB&item_name=Material%20Theme%20for%20Visual%20Studio%20Code&item_number=material%2dtheme%2ddonation&no_note=0&cn=Aggiungi%20istruzioni%20speciali%20per%20il%20venditore%3a&no_shipping=2&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted
-"><img src="https://img.shields.io/badge/Support%20this%20project-%F0%9F%92%80-ff69b4.svg?style=flat-square"/></a>
+<a href="https://code.visualstudio.com/updates/v1_25"><img src="https://img.shields.io/badge/VS_Code-v1.25+-373277.svg?style=flat-square"/></a> <a href="https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme"><img src="https://vsmarketplacebadge.apphb.com/installs/Equinusocio.vsc-material-theme.svg?style=flat-square"/></a>
+<a href="https://opencollective.com/vsc-material-theme"><img src="https://img.shields.io/badge/Support%20this%20project-%F0%9F%92%96%EF%B8%8F-green.svg?style=flat-square"/></a>
 
 
 The most epic theme meets Visual Studio Code. You can help by reporting issues [here](https://github.com/equinusocio/vsc-material-theme/issues)
@@ -172,7 +171,7 @@ Thanks to the Material Theme community you can use is with other softwares, here
 
 - Atom Editor: [atom-material-ui](https://github.com/silvestreh/atom-material-ui) (by [@silvestreh](https://github.com/silvestreh))
 - [IntelliJ IDEA](https://github.com/ChrisRM/material-theme-jetbrains) (thanks to [@ChrisRM](https://github.com/ChrisRM) and [@mallowigi](https://github.com/mallowigi)).
-- [Vim](https://github.com/kristijanhusak/vim-hybrid-material) (thanks to [@kristijanhusak](https://github.com/kristijanhusak)).
+- [Vim](https://github.com/hzchirs/vim-material) (thanks to [@hzchirs](https://github.com/hzchirs)).
 - [Terminal OSX](https://gist.github.com/mvaneijgen/4c56701215847dd5ddcf) (thanks to [@mvaneijgen](https://github.com/mvaneijgen)).
 - [iTerm2](https://gist.github.com/Revod/3f3115f8d4b90fc986fd4b61441c2567) (by [@Revod](https://github.com/Revod)) and [iTerm2 Palenight](https://github.com/JonathanSpeek/palenight-iterm2) (by [@jonathanspeek](https://github.com/jonathanspeek)).
 - [Hyper](https://github.com/equinusocio/hyper-material-theme).
