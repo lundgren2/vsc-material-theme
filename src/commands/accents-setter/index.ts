@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 
 import {getDefaultValues, getAccentsProperties} from './../../helpers/fs';
 import consts from './consts';
+import { getCurrentThemeID } from '../../helpers/vscode';
 
 const REGEXP_HEX: RegExp = /^#([0-9A-F]{6}|[0-9A-F]{8})$/i;
 
@@ -33,13 +34,14 @@ const isValidColour = (colour: string | null | undefined): boolean =>
 /**
  * Sets workbench options
  */
-const setWorkbenchOptions = (config: any): Thenable<boolean> =>
-  vscode.workspace.getConfiguration().update('workbench.colorCustomizations', config, true)
+const setWorkbenchOptions = (config: any, currentTheme: string): Thenable<boolean> =>
+  vscode.workspace.getConfiguration().update('workbench.colorCustomizations', {[`[${currentTheme}]`]: config}, true)
     .then(() => true, reason => vscode.window.showErrorMessage(reason));
 /**
  * VSCode command
  */
 export default async (accent?: string): Promise<boolean> => {
+  const currentTheme = getCurrentThemeID();
   const themeConfigCommon = getDefaultValues();
   const config: any = vscode.workspace.getConfiguration().get('workbench.colorCustomizations');
 
@@ -50,7 +52,7 @@ export default async (accent?: string): Promise<boolean> => {
         ...assignColorCustomizations(undefined)
       };
 
-      return setWorkbenchOptions(newConfig)
+      return setWorkbenchOptions(newConfig, currentTheme)
         .then(() => Promise.resolve(true));
     }
     default: {
@@ -59,7 +61,7 @@ export default async (accent?: string): Promise<boolean> => {
         ...assignColorCustomizations(themeConfigCommon.accents[accent])
       };
 
-      return setWorkbenchOptions(newConfig)
+      return setWorkbenchOptions(newConfig, currentTheme)
         .then(() => Boolean(accent));
     }
   }
